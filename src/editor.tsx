@@ -143,7 +143,11 @@ export class Editor extends React.Component<Editor.Props, State> {
             for (let place of usedPlace) {
                 if (place.hit(pos))
                     pos.x = place.right + margin.x;
-                pos.y = place.top;
+
+                if (!node.position){
+                    pos.y = place.top;
+                }
+
             }
             const size = { x: 100, y: 100 };    // TODO: get size out of ref
             nodesState.set(node.id, { pos, size, isCollapsed: false });
